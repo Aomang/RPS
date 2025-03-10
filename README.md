@@ -3,7 +3,7 @@
 ![image](https://github.com/user-attachments/assets/f99f808d-aeac-4752-bea5-70824719df5a)
 
 # อธิบาย code และการทำงานของ RPS
-#### การเพิ่มผู้เล่น (จะอยู่ใน function addPlayer())
+### การเพิ่มผู้เล่น (จะอยู่ใน function addPlayer())
   * ผู้เล่นจะต้องมีแค่ 2 คน
   * ผู้เล่นที่สามารถเล่นได้จะมีแค่ 4 account ดังนี้
        1. 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
@@ -45,7 +45,7 @@
     }
 ```
 
-#### ให้ผู้เล่นคืนเงินได้ เมื่อผู้เล่นคนแรกเข้ามาแล้วไม่มีผู้เล่นอีกคนเข้ามา (จะอยู่ใน function checkTimeout())
+### ให้ผู้เล่นคืนเงินได้ เมื่อผู้เล่นคนแรกเข้ามาแล้วไม่มีผู้เล่นอีกคนเข้ามา (จะอยู่ใน function checkTimeout())
   * จะกำหนดไว้ว่าจำนวนผู้เล่นต้องเป็น 1 เท่านั้นจึงจะใช้งาน function ได้
   * เมื่อผู้เล่นคนที่เข้ามาสามารถกดใช้งาน function เวลาผ่านไปแล้วมากกว่า 1 นาที่(เวลาเริ่มต้นมาจากตอนที่เพิ่มผู้เล่นคนแรก) ผู้เล่นจะได้เงินที่ลงขันมาคืน
   * จะทำการรีเซ็ตเกมกลับไปให้เล่นได้อีกครั้ง
@@ -63,7 +63,7 @@ function checkTimeout() public{
     }
 ```
 
-#### การซ่อน choice และ commit (จะอยู่ใน function getHash(bytes32 data) และ input(bytes32 choice))
+### การซ่อน choice และ commit (จะอยู่ใน function getHash(bytes32 data) และ input(bytes32 choice))
   * ผู้เล่นจะต้องทำการนำ choice ไปรวมกับค่า random ก่อน [แปลงค่าที่นี่]([LinktoGo](https://colab.research.google.com/drive/1PA-QhkX3qa1iSn8qunInzX6E8xtRBIjG))
   * นำ data ที่ได้มาเข้า function hash
     * โดย function hash จะทำการไปเรียกใช้ function getHash(data) ที่อยู่ในไฟล์ CommitReveal.sol และจะ return ค่าที่ hash แล้วกลับมาให้ผู้ใช้
@@ -92,7 +92,7 @@ function checkTimeout() public{
         }
     }
     ```
-#### ให้ผู้เล่นคืนเงินได้ เมื่อผู้เล่นคนนึง input มาแล้วแต่อีกคนไม่ยอม input เข้ามา (จะอยู่ใน function checkTime_play())
+### ให้ผู้เล่นคืนเงินได้ เมื่อผู้เล่นคนนึง input มาแล้วแต่อีกคนไม่ยอม input เข้ามา (จะอยู่ใน function checkTime_play())
  * จะใช้ได้เมื่อ มีผู้เล่น 2 คนแล้ว แต่มีคน input มาแค่ 1
  * เมื่อกดใช้งาน function เมื่อเวลาผ่านไปแล้วมากกว่า 1 นาที่(เวลาเริ่มต้นมาจากตอนที่ผู้เล่นได้ทำการใส่ input เข้ามาคนแรก) ผู้เล่นจะได้เงินที่ลงขันทั้งหมดไป
  * โดยจะทำการเช็คว่าผู้เล่นคนไหนที่เป็นคน input
@@ -109,7 +109,7 @@ function checkTimeout() public{
         }
     }
    ```
-#### การ reveal และนำ choice มาตัดสินรวมถึงการเริ่มเล่นใหม่ได้ (จะอยู่ใน function reveal(bytes32 revealHash), _checkWinnerAndPay(), _play_again())
+### การ reveal และนำ choice มาตัดสินรวมถึงการเริ่มเล่นใหม่ได้ (จะอยู่ใน function reveal(bytes32 revealHash), _checkWinnerAndPay(), _play_again())
  * ผู้เล่นนำ data(ค่าที่ได้ก่อนนำไป hash) มาใส่ function reveal
   * โดย function reveal จะเรียกใช้ function reveal(revealHash) ที่อยู่ในไฟล์ CommitReveal.sol
   * เก็บค่า reveal ของแต่ละ player ไว้ใน player_reveal
